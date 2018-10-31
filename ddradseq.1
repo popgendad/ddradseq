@@ -1,0 +1,94 @@
+.TH DDRADSEQ 1
+.SH NAME
+ddradseq \- Parses fastQ files by flow cell, barcode, and/or index
+.SH SYNOPSIS
+.B ddradseq
+[\fB\-a?V\fR]
+[\fB\-c\fR \fIFILE\fR]
+[\fB\-\-csv\fR=\fIFILE\fR]
+[\fB\-d\fR \fIINT\fR]
+[\fB\-\-dist\fR=\fIINT\fR]
+[\fB\-e\fR \fIINT\fR]
+[\fB\-\-gape\fR=\fIINT\fR]
+[\fB\-g\fR \fIINT\fR]
+[\fB\-\-gapo\fR=\fIINT\fR]
+[\fB\-m\fR \fISTR\fR]
+[\fB\-\-mode\fR=\fISTR\fR]
+[\fB\-o\fR \fIDIR\fR]
+[\fB\-\-out\fR=\fIDIR\fR]
+[\fB\-p\fR \fISTR\fR]
+[\fB\-\-pattern\fR=\fISTR\fR]
+[\fB\-s\fR \fIINT\fR]
+[\fB\-\-score\fR=\fIINT\fR]
+.IR INPUT_DIRECTORY
+.SH DESCRIPTION
+.B ddradseq
+parses fastQ files by flow cell, barcode, and/or index. The program requires
+that both the
+.BR \-\-out
+and
+.BR \-\-csv
+options are specified by the user.
+The program will write all of its activity to the log file
+.IR ddradseq.log\fR.
+The log file will be written to the user's current working directory.
+If the program fails, it is often useful to first check this log file
+for any error messages.
+
+The non-optioned argument
+.IR INPUT_DIRECTORY
+specifies the parent filesystem directory, below which all of the input
+fastQ files can be found. The program searches all child directories
+in the directory tree. By default, the
+.BR ddradseq
+program will search for files ending in the suffix
+.IR .fastq.gz
+as input for the program. This behavior can be changed by invoking the
+.BR \-\-pattern
+option, which accepts a glob pattern, such as wildcards.
+.SH OPTIONS
+.TP
+.BR \-a ", " \-\-across\fR
+Pool sequences across flow cells.
+Default: false.
+.TP
+.BR \-V ", " \-\-version\fR
+Print program version and exit.
+.TP
+.BR \-c ", " \-\-csv =\fIFILE\fR
+CSV file with index and barcode.
+.TP
+.BR \-d ", " \-\-dist =\fIINT\fR
+Edit distance for barcode matching.
+Default is one base difference.
+.TP
+.BR \-e ", " \-\-gape =\fIINT\fR
+Penalty for extending open gap.
+Default is one.
+.TP
+.BR \-g ", " \-\-gapo =\fIINT\fR
+Penalty for opening an alignment gap.
+Default is five.
+.TP
+.BR \-m ", " \-\-mode =\fISTR\fR
+Run mode of ddradseq program. Valid run-time modes are "parse", "pair",
+"trimend", and "all".
+Default is "all".
+.TP
+.BR \-o ", " \-\-out =\fIDIR\fR
+Parent directory to write output.
+.TP
+.BR \-p ", " \-\-pattern =\fISTR\fR
+A glob expression to match all input fastQ files (e.g., "*.fq.gz").
+.TP
+.BR \-s ", " \-\-score =\fIINT\fR
+Alignment score to consider mates properly paired.
+Default is 100.
+
+.SH AUTHOR
+Daniel Garrigan <dgarriga@lummei.net>
+
+.SH COPYRIGHT
+
+.B ddradseq
+is distributed under the MIT license.
