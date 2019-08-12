@@ -9,7 +9,7 @@ number of individuals ([Peterson et al. 2012](http://journals.plos.org/plosone/a
 Once a ddRADseq library has been sequenced, the resulting fastQ files must be computationally parsed in an efficient manner.
 
 The stages of the Double Digest RADseq bioinformatic pipeline can be carried out using our program **ddradseq**.
-The source code is written in C and is freely available from the [GitHub website](https://github.com/lummeianalytics/ddradseq).
+The source code is written in C and is freely available from the [GitLab website](https://gitlab.com/evolgen/ddradseq).
 This single program can handle all three steps of the ddRADseq pipeline. The software has been engineered to leave
 a small memory footprint, and thus, should be able to handle a large number of individuals. To accomplish this, the
 **ddradseq** program runs in three different modes, corresponding to different stages in the ddRADseq pipeline. The three
